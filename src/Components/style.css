@@ -1,4 +1,10 @@
 /* styles.css */
+.table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .cell-blue {
   color: blue;
   background: lightgray;
