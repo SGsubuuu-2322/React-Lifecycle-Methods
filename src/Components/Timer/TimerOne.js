@@ -58,12 +58,15 @@ export default class Timer extends Component {
   }
 
   componentDidUpdate() {
-    console.log("Timer componentDidUpdate method...");
+    console.log("TimerOne componentDidUpdate method...");
     console.log("-------------------------------------");
+    if (this.state.time === 5) {
+      clearInterval(this.timer);
+    }
   }
 
   componentWillUnmount() {
-    console.log("Timer componentWillUnmount method...");
+    console.log("TimerOne componentWillUnmount method...");
     console.log("-------------------------------------");
 
     // Clear the interval when the component is unmounted
