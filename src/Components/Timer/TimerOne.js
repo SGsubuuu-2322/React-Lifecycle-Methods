@@ -44,12 +44,6 @@ export default class Timer extends Component {
   componentDidMount() {
     console.log("TimerOne componentDidMount method...");
     console.log("-------------------------------------");
-
-    this.timer = setInterval(() => {
-      this.setState((prevState) => ({
-        time: prevState.time + 1,
-      }));
-    }, 1000);
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -57,11 +51,22 @@ export default class Timer extends Component {
     return null;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState, snapShot) {
     console.log("TimerOne componentDidUpdate method...");
     console.log("-------------------------------------");
-    if (this.state.time === 5) {
-      clearInterval(this.timer);
+    // if (this.state.time === 5) {
+    //   clearInterval(this.timer);
+    // }
+    if (prevProps.timerOn !== this.props.timerOn) {
+      if (this.props.timerOn) {
+        this.timer = setInterval(() => {
+          this.setState((prevState) => ({
+            time: prevState.time + 1,
+          }));
+        }, 1000);
+      } else {
+        clearInterval(this.timer);
+      }
     }
   }
 
