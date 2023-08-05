@@ -1,5 +1,6 @@
 import { Component } from "react";
-// import ComponentA from "./Components/Component/ComponentA";
+import ErrorBoundary from "./ErrorBoundary";
+import ComponentA from "./Components/Component/ComponentA";
 import Timer from "./Components/Timer/TimerOne";
 export default class App extends Component {
   constructor() {
@@ -23,10 +24,16 @@ export default class App extends Component {
           {this.state.mount ? "Un-Mount" : "Mount"}
         </button> */}
         {/* {this.state.mount ? <Timer /> : null} */}
-        <Timer timerOn = {this.state.timerOn}/>
-        <button onClick={this.handleTimer}>
-          {this.state.timerOn ? "Stop-Timer" : "Start-Timer"}
-        </button>
+        <ErrorBoundary>
+          <ComponentA />
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <Timer timerOn={this.state.timerOn} />
+          <button onClick={this.handleTimer}>
+            {this.state.timerOn ? "Stop-Timer" : "Start-Timer"}
+          </button>
+        </ErrorBoundary>
       </>
     );
   }
