@@ -17,7 +17,7 @@ export default class Timer extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log("Timer shouldComponentUpdate method...");
-    return true;
+    return nextProps.timerOn !== this.props.timerOn || nextState.time % 5 === 0;
   }
 
   //   incValue = () => {
