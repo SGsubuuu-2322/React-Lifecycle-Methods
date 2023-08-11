@@ -30,7 +30,7 @@ export default class ComponentA extends Component {
   render() {
     console.log("ComponentA in render...");
     if (this.state.loading) {
-      return <h1>Loading...</h1>;
+      return <h1>Loading......</h1>;
     } else {
       return (
         <>
